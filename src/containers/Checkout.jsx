@@ -5,14 +5,17 @@ import CheckoutItem from '../components/CheckoutItem';
 import '../styles/components/Checkout.css';
 
 function Checkout() {
-
-  const { state: { cart }, removeFromCart } = useContext(AppContext);
-  const handleRemove = product => () => {
+  const {
+    state: { cart },
+    removeFromCart,
+  } = useContext(AppContext);
+  const handleRemove = (product) => () => {
     removeFromCart(product);
   };
 
   const handleSumTotal = () => {
-    const reducer = (accumulator, currentValue) => accumulator + currentValue.price;
+    const reducer = (accumulator, currentValue) =>
+      accumulator + currentValue.price;
     const sum = cart.reduce(reducer, 0);
     return sum;
   };
@@ -28,8 +31,8 @@ function Checkout() {
       {cart.length > 0 && (
         <div className="Checkout-sidebar">
           <h3>{`Precio Total: ${handleSumTotal()}`}</h3>
-          <Link to='/checkout/information' >
-            <button type='button' >Continuar pedido</button>
+          <Link to="/checkout/information">
+            <button type="button">Continuar pedido</button>
           </Link>
         </div>
       )}
