@@ -8,6 +8,7 @@ function Information() {
   const {
     state: { cart },
     addToBuyer,
+    handleSumTotal
   } = useContext(AppContext);
   const form = useRef(null);
   const navigate = useNavigate();
@@ -20,7 +21,7 @@ function Information() {
       address: formData.get('address'),
       apto: formData.get('apto'),
       city: formData.get('city'),
-      country: formData.get('country'),
+      country: formData.get('country'), 
       state: formData.get('state'),
       cp: formData.get('cp'),
       phone: formData.get('phone'),
@@ -69,6 +70,11 @@ function Information() {
             </div>
           </div>
         ))}
+        <div className="Information-element">
+          <h4>Total</h4>
+          <span>$ {handleSumTotal()}</span>
+        </div>
+          
       </div>
     </div>
   );

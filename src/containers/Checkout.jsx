@@ -8,17 +8,13 @@ function Checkout() {
   const {
     state: { cart },
     removeFromCart,
+    handleSumTotal
   } = useContext(AppContext);
   const handleRemove = (product) => () => {
     removeFromCart(product);
   };
 
-  const handleSumTotal = () => {
-    const reducer = (accumulator, currentValue) =>
-      accumulator + currentValue.price;
-    const sum = cart.reduce(reducer, 0);
-    return sum;
-  };
+  
 
   return (
     <div className="Checkout">
@@ -30,7 +26,7 @@ function Checkout() {
       </div>
       {cart.length > 0 && (
         <div className="Checkout-sidebar">
-          <h3>{`Precio Total: ${handleSumTotal()}`}</h3>
+          <h3>{`Precio Total: $${handleSumTotal()}`}</h3>
           <Link to="/checkout/information">
             <button type="button">Continuar pedido</button>
           </Link>
