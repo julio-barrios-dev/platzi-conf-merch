@@ -6,7 +6,7 @@ const useIntialState = () => {
 
   const addToCart = (payload) => {
     setState({
-      ...state,
+      ...state, 
       cart: [...state.cart, payload],
     });
   };
@@ -32,6 +32,12 @@ const useIntialState = () => {
       ...state,
       orders: [...state.orders, payload]
     })
+  };
+  const addCoord = payload => {
+    setState({
+      ...state,
+      coord: [...state.coord, payload]
+    })
   }
   const handleSumTotal = () => {
     const reducer = (accumulator, currentValue) =>
@@ -39,6 +45,7 @@ const useIntialState = () => {
     const sum = state.cart.reduce(reducer, 0);
     return sum;
   };
+  const test = () => console.log(state);
 
   return {
     addToCart,
@@ -46,6 +53,8 @@ const useIntialState = () => {
     addToBuyer,
     addNewOrder,
     handleSumTotal,
+    addCoord,
+    test,
     state
   };
 };

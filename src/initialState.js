@@ -1,6 +1,7 @@
 export default {
   cart: [],
   buyer: [],
+  coord: [],
   orders: [],
   products: [
     {

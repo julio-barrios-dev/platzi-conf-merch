@@ -1,23 +1,26 @@
-import React from 'react';
-// import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import React,{ useState, useEffect } from 'react';
 import { MapContainer, Marker, TileLayer, Popup } from 'react-leaflet'; 
-function Map() {
 
-  const defaultCenter = [-10.248961185632005, -48.324814460505145 ]
-   
+function Map({ data }) {
+
+
+  const d = [51.505, -0.09];
+  const defaultCenter = data;
 
   return (
-    <MapContainer center={defaultCenter} zoom={17} scrollWheelZoom={false}>
+    
+    <MapContainer center={defaultCenter} zoom={17} scrollWheelZoom={true}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={defaultCenter}>
         <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
+          A pretty CSS3 popup. <br /> {data}.
         </Popup>
       </Marker>
     </MapContainer>
+    
   );
 }
 

@@ -21,7 +21,7 @@ function Checkout() {
       <div className="Checkout-content">
         <h3>{cart.length > 0 ? 'Lista de pedidos' : 'Sin pedidos...'}</h3>
         {cart.map((item, index) => (
-          <CheckoutItem item={item} handleRemove={handleRemove} index={index} />
+          <CheckoutItem item={item} handleRemove={handleRemove} index={index} key={index} />
         ))}
       </div>
       {cart.length > 0 && (

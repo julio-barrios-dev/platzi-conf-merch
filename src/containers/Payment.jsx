@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import AppContext from '../context/AppContext';
+import usePositionAddress from '../hooks/usePositionAddress';
 import { useNavigate } from 'react-router-dom';
 import '../styles/components/Payment.css';
 
 function Payment() {
-  const { state: { cart, buyer }, addNewOrder, handleSumTotal } = useContext(AppContext);
+  const { state: { cart, buyer}, addNewOrder, handleSumTotal } = useContext(AppContext);
   const navigate = useNavigate();
 
-  const handlePymentSuccess = () => {
+  usePositionAddress(buyer[0]?.address);
+
+  const handlePaymentSuccess = () => {
     const newOrder = {
       buyer,
       product: cart
@@ -41,7 +44,7 @@ function Payment() {
               </span>
             </div>
         <div className="Payment-button">
-          <button type='button' onClick={handlePymentSuccess}>
+          <button type='button' onClick={handlePaymentSuccess}>
             Boton de pago Paypal
           </button>
         </div>
