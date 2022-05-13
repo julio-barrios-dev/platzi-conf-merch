@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 //const Dotenv = require('dotenv-webpack');
 const webpack  = require('webpack');
 require('dotenv').config();
@@ -52,9 +53,15 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-/*     new Dotenv({
- 
-    }), */
+/*     new Dotenv({}), */
+    new CopyPlugin({
+      patterns: [
+        { from: 'public/manifest.json', to: '' },
+        { from: 'public/service-worker.js', to: '' },
+        { from: 'public/icon.png', to: 'assets' },
+        
+      ]
+    }),
     new webpack.DefinePlugin({
       'process.env.POSITION_STACK': JSON.stringify(process.env.POSITION_STACK)
     })

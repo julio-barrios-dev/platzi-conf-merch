@@ -4,15 +4,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
   <title>Platzi conf Merch</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
   crossorigin=""/>
+  <link rel="manifest" href="./manifest.json">
   <script src="https://kit.fontawesome.com/e65a97271e.js" crossorigin="anonymous"></script>
   
 </head>
 <body>
   <div id="app"></div>
+  <script>
+    if ('serviceWorker'in navigator) {
+        window.addEventListener('load',function () {
+          navigator.serviceWorker.register('service-worker.js').then(function (registration) {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          },function (err) {
+            console.log('ServiceWorker registration failed: ', err);
+          }).catch(function (err) {
+            console.log(err)
+          });
+        });
+      }else {
+        console.log('service worker is not supported');
+      }
+    </script>
 </body>
 </html>
