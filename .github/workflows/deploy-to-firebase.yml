@@ -11,6 +11,8 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+        env: 
+          POSITION_STACK: ${{ secrets.POSITION_STACK }}
       - name: Archive Production Artifact
         uses: actions/upload-artifact@main
         with:
