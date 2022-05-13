@@ -1,9 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const Dotenv = require('dotenv-webpack');
-const { webpack } = require('webpack');
+//const Dotenv = require('dotenv-webpack');
+const webpack  = require('webpack');
+require('dotenv').config();
 
+/** @type {import('webpack').Configuration} */
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -50,7 +52,12 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'assets/[name].css',
     }),
-    new Dotenv
+/*     new Dotenv({
+ 
+    }), */
+    new webpack.DefinePlugin({
+      'process.env.POSITION_STACK': JSON.stringify(process.env.POSITION_STACK)
+    })
   ],
   devServer: {
     static: {

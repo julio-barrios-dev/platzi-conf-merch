@@ -14,7 +14,7 @@ jobs:
         env: 
           POSITION_STACK: ${{ secrets.POSITION_STACK }}
       - name: Archive Production Artifact
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
