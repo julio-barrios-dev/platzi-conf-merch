@@ -1,8 +1,19 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import initialState from '../initialState';
+
+const API = '/link'
 
 const useIntialState = () => {
   const [state, setState] = useState(initialState);
+  const [products, setProduct] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch(API);
+      const data = await response.json();
+      setProduct(data);
+    }
+  });
 
   const addToCart = (payload) => {
     setState({
