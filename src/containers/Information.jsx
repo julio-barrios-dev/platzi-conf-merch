@@ -1,6 +1,6 @@
 import React, { useRef, useContext } from 'react';
-import AppContext from '../context/AppContext';
 import { Link, useNavigate } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 
 import '../styles/components/Information.css';
 

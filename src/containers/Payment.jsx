@@ -45,7 +45,7 @@ function Payment() {
             </div>
         <div className="Payment-button">
           <button type='button' onClick={handlePaymentSuccess}>
-            Boton de pago Paypal
+            Confirmar pago
           </button>
         </div>
       </div>

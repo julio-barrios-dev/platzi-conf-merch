@@ -9,7 +9,8 @@ const usePositionAddress = (address) => {
   const [map, setMap] = useState([0, 0]);
   const API = `http://api.positionstack.com/v1/forward?access_key=${process.env.POSITION_STACK}&query=${address}`;
 
-    useEffect(() => {
+  
+  useEffect(() => {
        fetch(API)
         .then(response => response.json())
         .then(dataLocation => {
